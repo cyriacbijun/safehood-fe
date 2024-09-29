@@ -1,8 +1,12 @@
-import React from "react";
-import MapWithMarker from "./MapWithMarker"; // Import the new component
+import React, { useState } from "react";
+import MapWithMarker from "./components/MapWithMarker";
+import Loader from "./components/loader";
 import { MapContainer } from "react-leaflet";
+import "./App.css";
 
 const App = () => {
+  const [neighbourhoodFeedback, setFeedbackText] = useState(""); 
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <div>
       <h1>Safehood - Check your neighbourhood safety the right way</h1>
@@ -12,9 +16,9 @@ const App = () => {
         scrollWheelZoom={true}
         style={{ height: "600px", width: "80%" }}
       >
-        <MapWithMarker />
-      </MapContainer>
-
+        <MapWithMarker setFeedbackText={setFeedbackText} setIsLoading={setIsLoading}/>
+      </MapContainer >
+      {isLoading ? <Loader /> : <p>{neighbourhoodFeedback}</p>}
     </div>
   );
 };
