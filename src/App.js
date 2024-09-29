@@ -12,10 +12,15 @@ const App = () => {
   return (
     <div id="main-container">
 
+<div class="titlebar">
       <h1>SAFEHOOD</h1>
       <p id="tagline">
         Check your neighbourhood safety the right way
       </p>
+  </div>
+
+  <div id="main-container" class="body-container">
+      
 
       <p id="description">
       Your go-to app for neighborhood safety insights. 
@@ -31,6 +36,7 @@ const App = () => {
         <MapWithMarker setFeedback={setFeedback} setIsLoading={setIsLoading} />
       </MapContainer >
       {isLoading ? <Loader /> : <FeedbackContainer feedBack={neighbourhoodFeedback} />}
+      </div>
     </div>
   );
 };
