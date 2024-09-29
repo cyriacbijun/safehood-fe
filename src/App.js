@@ -15,8 +15,6 @@ const App = () => {
   </div>
 
   <div id="main-container" class="body-container">
-      
-
       <p id="description">
       Your go-to app for neighborhood safety insights. 
       Explore any area by selecting a location on the map and instantly get safety ratings based on crime statistics and other local data. 
