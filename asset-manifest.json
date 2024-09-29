@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/safehood-fe/static/css/main.fe099f0d.css",
-    "main.js": "/safehood-fe/static/js/main.23da8ffc.js",
+    "main.css": "/safehood-fe/static/css/main.076159bf.css",
+    "main.js": "/safehood-fe/static/js/main.02b962eb.js",
     "static/js/453.fa642cae.chunk.js": "/safehood-fe/static/js/453.fa642cae.chunk.js",
     "index.html": "/safehood-fe/index.html",
-    "main.fe099f0d.css.map": "/safehood-fe/static/css/main.fe099f0d.css.map",
-    "main.23da8ffc.js.map": "/safehood-fe/static/js/main.23da8ffc.js.map",
+    "main.076159bf.css.map": "/safehood-fe/static/css/main.076159bf.css.map",
+    "main.02b962eb.js.map": "/safehood-fe/static/js/main.02b962eb.js.map",
     "453.fa642cae.chunk.js.map": "/safehood-fe/static/js/453.fa642cae.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fe099f0d.css",
-    "static/js/main.23da8ffc.js"
+    "static/css/main.076159bf.css",
+    "static/js/main.02b962eb.js"
   ]
 }
