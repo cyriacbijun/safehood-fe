@@ -26,7 +26,7 @@ const ProgressBar = ({ value }) => {
             width: `${progress}%`,
           }}
         ></div>
-        <span className="progress-text">{category.replace('-', ' ')}</span>
+         <span className={`progress-text ${category}`}>{category.replace('-', ' ')}</span>
       </div>
     );
   };

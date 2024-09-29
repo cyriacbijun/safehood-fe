@@ -29,7 +29,6 @@
     background-color: green;
   }
   
-  /* Progress Text */
   .progress-text {
     position: absolute;
     top: 50%;
@@ -37,6 +36,11 @@
     transform: translate(-50%, -50%);
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    color: #333;
+    font-size: 15px;
+    color: white;
+  }
+  
+  .progress-text.moderate {
+    color: black;
   }
   
