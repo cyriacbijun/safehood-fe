@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import MapWithMarker from "./MapWithMarker"; // Import the new component
+import { MapContainer } from "react-leaflet";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Safehood - Check your neighbourhood safety the right way</h1>
+      <MapContainer
+        center={[33.4484, -112.0740]}
+        zoom={13}
+        scrollWheelZoom={true}
+        style={{ height: "600px", width: "80%" }}
+      >
+        <MapWithMarker />
+      </MapContainer>
+
     </div>
   );
-}
+};
 
 export default App;
