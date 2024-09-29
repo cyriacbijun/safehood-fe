@@ -1,0 +1,29 @@
+.progress-bar-container {
+    width: 100%; /* Full width container */
+    height: 30px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: opacity 0.3s ease; /* Add fade effect for visibility */
+  }
+  
+  .progress-bar-fill {
+    height: 100%;
+    width: 0; /* Initial width */
+    background-color: green; /* Starting color */
+    transition: width 0.5s ease, background-color 0.5s ease; /* Animation */
+    border-radius: 5px; /* To keep rounded corners */
+  }
+  
+  /* Hide progress bar with opacity */
+  .hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  /* Show progress bar when not hidden */
+  .progress-bar-container:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+  }
+  

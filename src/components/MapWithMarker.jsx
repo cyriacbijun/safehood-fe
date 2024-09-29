@@ -13,7 +13,7 @@ const markerIcon = new L.Icon({
 });
 
 const radius = 500;
-const API_URL = "";
+const API_URL = "api/coordinates_to_zipcode";
 
 const MapWithMarker = ({ setFeedback, setIsLoading }) => {
   const [markerPosition, setMarkerPosition] = useState(null);
@@ -22,11 +22,15 @@ const MapWithMarker = ({ setFeedback, setIsLoading }) => {
     click: (e) => {
       const latlng = e.latlng;
       setMarkerPosition([latlng.lat, latlng.lng]);
-      postLocation(markerPosition);
+      const payload = {
+        lat: latlng.lat.toString(),
+        lon: latlng.lng.toString(),
+      };
+      postLocation(payload);
     },
   });
 
-  const postLocation = async (markerPosition) => {
+  const postLocation = async (markerPositionPayload) => {
     setIsLoading(true);
     try {
       const response = await fetch(API_URL, {
@@ -34,13 +38,14 @@ const MapWithMarker = ({ setFeedback, setIsLoading }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(markerPosition),
+        body: JSON.stringify(markerPositionPayload),
       });
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
+      console.log(data);
       setFeedback(data);
     } catch (error) {
       console.error("Error posting marker data:", error);

@@ -37,20 +37,39 @@
   }
 }
 
-p {
-  margin-top: "20px" 
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1{
+  margin-bottom: 0px;
+}
+
+#tagline {
+  display: contents;
+  font-weight: 600;
+}
+
+#description{
+  margin-top: 20px;
+  width: 50%;
+  text-align: justify;
 }
 
 #main-container {
   display: flex;
   justify-content: center;
-}
-
-#sub-container {
-  max-width: 950px;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
 }
 
 #map-container{
-  border: 5px solid black;
+  margin-top: 20px;
   height: 600px;
+  width: 90%;
+}
+
+#feedback-container{
+  width: 50%;
 }
