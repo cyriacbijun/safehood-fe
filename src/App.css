@@ -71,12 +71,11 @@ h1{
 #map-container{
   margin-top: 20px;
   height: 600px;
-  width: 50%;
+  width: 85%;
   border: 1px black ;
 }
 
 #feedback-container{
-  width: 50%;
   text-align: justify;
 }
 

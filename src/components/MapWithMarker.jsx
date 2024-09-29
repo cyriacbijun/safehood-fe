@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useMapEvents } from 'react-leaflet/hooks'
-import { TileLayer, Marker, LayerGroup, Circle } from "react-leaflet";
+import { TileLayer, Marker, LayerGroup, Circle, Popup } from "react-leaflet";
 import L from "leaflet";
+import Loader from "./Loader";
+import { FeedbackContainer } from "./FeedbackContainer";
+import { FeedBack } from "../models/FeedBack";
 
 const markerIcon = new L.Icon({
   iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
@@ -15,8 +18,10 @@ const markerIcon = new L.Icon({
 const radius = 500;
 const API_URL = "api/coordinates_to_zipcode";
 
-const MapWithMarker = ({ setFeedback, setIsLoading }) => {
+const MapWithMarker = () => {
   const [markerPosition, setMarkerPosition] = useState(null);
+  const [neighbourhoodFeedback, setFeedback] = useState(new FeedBack("", "", 0));
+  const [isLoading, setIsLoading] = useState(false);
 
   const map = useMapEvents({
     click: (e) => {
@@ -73,6 +78,12 @@ const MapWithMarker = ({ setFeedback, setIsLoading }) => {
           />
         </LayerGroup>
 
+      )}
+      {markerPosition && (
+          <Popup position={markerPosition}>
+          {isLoading ? <Loader /> : <FeedbackContainer feedBack={neighbourhoodFeedback} />}
+      </Popup>
+       
       )}
     </>
   );
