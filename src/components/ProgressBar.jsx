@@ -2,28 +2,33 @@ import React from 'react';
 import '../css/ProgressBar.css';
 
 const ProgressBar = ({ value }) => {
-  // Ensure the value is between 0 and 1
-  const progress = Math.min(Math.max(value, 0), 1);
-
-  // Calculate dynamic color based on the progress (from red to green)
-  const getProgressColor = (progress) => {
-    const red = Math.min(255, (1 - progress) * 255);
-    const green = Math.min(255, progress * 255);
-    return `rgb(${red}, ${green}, 0)`;
+    // Ensure value is within 1-100 range
+    const progress = Math.min(Math.max(value, 1), 100);
+  
+    // Get category based on progress value
+    const getCategory = (progress) => {
+      if (progress <= 33) {
+        return 'not-safe';
+      } else if (progress <= 66) {
+        return 'moderate';
+      } else {
+        return 'safe';
+      }
+    };
+  
+    const category = getCategory(progress);
+  
+    return (
+      <div className="progress-bar-container">
+        <div
+          className={`progress-bar-fill ${category}`}
+          style={{
+            width: `${progress}%`,
+          }}
+        ></div>
+        <span className="progress-text">{category.replace('-', ' ')}</span>
+      </div>
+    );
   };
-
-  return (
-    // Only show progress bar when the value is greater than 0
-    <div className={`progress-bar-container ${progress === 0 ? 'hidden' : ''}`}>
-      <div
-        className="progress-bar-fill"
-        style={{
-          width: `${progress * 100}%`,
-          backgroundColor: getProgressColor(progress),
-        }}
-      ></div>
-    </div>
-  );
-};
-
-export default ProgressBar;
+  
+  export default ProgressBar;

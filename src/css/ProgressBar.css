@@ -1,29 +1,42 @@
 .progress-bar-container {
-    width: 100%; /* Full width container */
+    width: 100%; /* Full width */
     height: 30px;
     background-color: #e0e0e0;
     border-radius: 5px;
     overflow: hidden;
-    transition: opacity 0.3s ease; /* Add fade effect for visibility */
+    position: relative;
   }
   
   .progress-bar-fill {
     height: 100%;
-    width: 0; /* Initial width */
-    background-color: green; /* Starting color */
-    transition: width 0.5s ease, background-color 0.5s ease; /* Animation */
-    border-radius: 5px; /* To keep rounded corners */
+    width: 0;
+    transition: width 0.5s ease;
+    border-radius: 5px;
   }
   
-  /* Hide progress bar with opacity */
-  .hidden {
-    opacity: 0;
-    visibility: hidden;
+  /* Color for Not Safe (Red) */
+  .progress-bar-fill.not-safe {
+    background-color: red;
   }
   
-  /* Show progress bar when not hidden */
-  .progress-bar-container:not(.hidden) {
-    opacity: 1;
-    visibility: visible;
+  /* Color for Moderate (Yellow) */
+  .progress-bar-fill.moderate {
+    background-color: yellow;
+  }
+  
+  /* Color for Safe (Green) */
+  .progress-bar-fill.safe {
+    background-color: green;
+  }
+  
+  /* Progress Text */
+  .progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #333;
   }
   
