@@ -40,3 +40,17 @@
 p {
   margin-top: "20px" 
 }
+
+#main-container {
+  display: flex;
+  justify-content: center;
+}
+
+#sub-container {
+  max-width: 950px;
+}
+
+#map-container{
+  border: 5px solid black;
+  height: 600px;
+}

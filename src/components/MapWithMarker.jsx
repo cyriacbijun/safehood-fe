@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMapEvents } from 'react-leaflet/hooks'
-import { TileLayer, Marker } from "react-leaflet";
+import { TileLayer, Marker, LayerGroup, Circle } from "react-leaflet";
 import L from "leaflet";
 
 const markerIcon = new L.Icon({
@@ -12,15 +12,16 @@ const markerIcon = new L.Icon({
   shadowSize: [41, 41],
 });
 
-const API_URL = ""
+const radius = 500;
+const API_URL = "";
 
-const MapWithMarker = ({ setFeedbackText, setIsLoading }) => {
+const MapWithMarker = ({ setFeedback, setIsLoading }) => {
   const [markerPosition, setMarkerPosition] = useState(null);
-  
+
   const map = useMapEvents({
     click: (e) => {
       const latlng = e.latlng;
-      setMarkerPosition([latlng.lat,latlng.lng]);
+      setMarkerPosition([latlng.lat, latlng.lng]);
       postLocation(markerPosition);
     },
   });
@@ -28,28 +29,28 @@ const MapWithMarker = ({ setFeedbackText, setIsLoading }) => {
   const postLocation = async (markerPosition) => {
     setIsLoading(true);
     try {
-        const response = await fetch(API_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(markerPosition),
-        });
-    
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setFeedbackText(data);
-      } catch (error) {
-        console.error("Error posting marker data:", error);
-        // throw error;
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(markerPosition),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
-      setIsLoading(false);
+      const data = await response.json();
+      setFeedback(data);
+    } catch (error) {
+      console.error("Error posting marker data:", error);
+      // throw error;
+    }
+    setIsLoading(false);
   };
 
   return (
-        <>
+    <>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -57,6 +58,16 @@ const MapWithMarker = ({ setFeedbackText, setIsLoading }) => {
       {markerPosition && (
         <Marker position={markerPosition} icon={markerIcon}>
         </Marker>
+      )}
+      {markerPosition && (
+        <LayerGroup>
+          <Circle
+            center={markerPosition}
+            pathOptions={{ fillColor: 'blue' }}
+            radius={radius}
+          />
+        </LayerGroup>
+
       )}
     </>
   );
